@@ -8,6 +8,8 @@ This is a Discord bot that allows users to check detailed information about any 
 - Logging of user information and bot responses in a `logger.txt` file.
 - Error handling for invalid IP addresses or API failures.
 
+## ☕ [Support my work on Ko-Fi](https://ko-fi.com/thatsinewave)
+
 ## Requirements
 
 - Python 3.6 or higher
