@@ -1,6 +1,10 @@
+<div align="center">
+
 # IP Information Discord Bot
 
 This is a Discord bot that allows users to check detailed information about any IP address using the ip-api.com API. The bot provides information such as country, city, region, district, zip code, latitude, longitude, timezone, currency, ISP, organization, AS number, AS name, reverse DNS, mobile status, proxy status, and hosting status.
+
+</div>
 
 ## Features
 
@@ -8,7 +12,11 @@ This is a Discord bot that allows users to check detailed information about any 
 - Logging of user information and bot responses in a `logger.txt` file.
 - Error handling for invalid IP addresses or API failures.
 
+<div align="center">
+
 ## ☕ [Support my work on Ko-Fi](https://ko-fi.com/thatsinewave)
+
+</div>
 
 ## Requirements
 
