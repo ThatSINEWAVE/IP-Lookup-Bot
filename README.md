@@ -41,6 +41,12 @@ This is a Discord bot that allows users to check detailed information about any 
 
 Replace `YOUR_BOT_TOKEN_HERE` with your Discord bot token, and `YOUR_GUILD_ID_HERE` with the ID of your Discord server.
 
+<div align="center">
+
+# [Join my discord server](https://discord.gg/2nHHHBWNDw)
+
+</div>
+
 ## Usage
 
 1. Run the `main.py` script to start the bot.
