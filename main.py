@@ -41,7 +41,7 @@ async def check_ip_info(interaction: discord.Interaction, ip_address: str):
         logging.info(user_info)
 
         # Make a request to ip-api.com
-        response = requests.get(f'http://ip-api.com/json/{ip_address}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query')
+        response = requests.get(f'http://ip-api.com/json/{ip_address}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,isp,org,as,asname,reverse,mobile,proxy,hosting,query')
         data = response.json()
 
         # Check if the request was successful
