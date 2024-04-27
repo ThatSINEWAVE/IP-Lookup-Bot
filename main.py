@@ -11,7 +11,8 @@ intents.messages = True
 intents.guilds = True
 
 # Configure logging
-logging.basicConfig(filename='logger.txt', level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(filename='logger.txt', level=logging.INFO,
+                    format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 # Read config from .env
 config = dotenv_values(".env")
@@ -33,6 +34,12 @@ async def on_ready():
     await bot.tree.sync()
 
 
+async def print_error(e: Exception, interaction: discord.Interaction):
+    error_msg = f'Error: {e}'
+    logging.error(error_msg)
+    await interaction.response.send_message(error_msg)
+
+
 @bot.tree.command(name='check', description="Check any IP")
 async def check_ip_info(interaction: discord.Interaction, ip_address: str):
     try:
@@ -41,7 +48,8 @@ async def check_ip_info(interaction: discord.Interaction, ip_address: str):
         logging.info(user_info)
 
         # Make a request to ip-api.com
-        response = requests.get(f'http://ip-api.com/json/{ip_address}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,isp,org,as,asname,reverse,mobile,proxy,hosting,query')
+        response = requests.get(
+            f'http://ip-api.com/json/{ip_address}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,isp,org,as,asname,reverse,mobile,proxy,hosting,query')
         data = response.json()
 
         # Check if the request was successful
@@ -93,9 +101,7 @@ async def check_ip_info(interaction: discord.Interaction, ip_address: str):
         # Send the response to the user
         await interaction.response.send_message(response_msg)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='reversedns', description="Perform reverse DNS lookup")
@@ -105,9 +111,7 @@ async def reversedns_lookup(interaction: discord.Interaction, input_ip: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='dnslookup', description="Perform DNS lookup")
@@ -117,9 +121,7 @@ async def dns_lookup(interaction: discord.Interaction, input_domain: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='hostsearch', description="Search for hosts sharing the same DNS")
@@ -129,9 +131,7 @@ async def host_search(interaction: discord.Interaction, input_domain: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='shareddns', description="Find shared DNS entries")
@@ -141,9 +141,7 @@ async def shared_dns(interaction: discord.Interaction, input_dns: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='whois', description="Perform WHOIS lookup")
@@ -156,21 +154,18 @@ async def whois_lookup(interaction: discord.Interaction, input_domain_or_ip: str
         output = f'```\n{whois_output}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='reverseip', description="Perform reverse IP lookup")
 async def reverse_ip_lookup(interaction: discord.Interaction, input_ip: str):
     try:
-        response = requests.get(API_BASE_URL + f'reverseiplookup/?q={input_ip}')
+        response = requests.get(
+            API_BASE_URL + f'reverseiplookup/?q={input_ip}')
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='aslookup', description="Perform AS lookup")
@@ -180,9 +175,7 @@ async def as_lookup(interaction: discord.Interaction, input_ip_or_as: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 
 @bot.tree.command(name='ipgeo', description="Get IP geolocation information")
@@ -192,9 +185,7 @@ async def ip_geolocation(interaction: discord.Interaction, input_ip: str):
         output = f'```\n{response.text}\n```'
         await interaction.response.send_message(output)
     except Exception as e:
-        error_msg = f'Error: {e}'
-        logging.error(error_msg)
-        await interaction.response.send_message(error_msg)
+        await print_error(e, interaction)
 
 # Run the bot with the token
 bot.run(TOKEN)
