@@ -3,8 +3,8 @@ from discord.ext import commands
 import requests
 import json
 import logging
-from datetime import datetime
 import whois
+from dotenv import dotenv_values
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -13,13 +13,12 @@ intents.guilds = True
 # Configure logging
 logging.basicConfig(filename='logger.txt', level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
-# Read config from file
-with open('config.json', 'r') as config_file:
-    config = json.load(config_file)
+# Read config from .env
+config = dotenv_values(".env")
 
 # Access token and guild ID
-TOKEN = config.get('token')
-GUILD_ID = int(config.get('guildId'))
+TOKEN = config.get('TOKEN')
+GUILD_ID = int(config.get('GUILDID'))
 bot = commands.Bot(command_prefix='/', intents=intents)
 
 API_BASE_URL = 'https://api.hackertarget.com/'
@@ -78,7 +77,6 @@ async def check_ip_info(interaction: discord.Interaction, ip_address: str):
             f'**Latitude:** {latitude}\n'
             f'**Longitude:** {longitude}\n'
             f'**Timezone:** {timezone}\n'
-            f'**Currency:** {currency}\n'
             f'**ISP:** {isp}\n'
             f'**Organization:** {org}\n'
             f'**AS Number:** {as_number}\n'
