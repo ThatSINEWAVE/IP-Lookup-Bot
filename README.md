@@ -30,16 +30,8 @@ This is a Discord bot that allows users to check detailed information about any 
 2. Install the required dependencies by running `pip install -r requirements.txt`.
 3. Create a new Discord bot and obtain the bot token.
 4. Create a new Discord server or use an existing one, and obtain the server ID (Guild ID).
-5. Create a `config.json` file in the project directory with the following structure:
-
-```json
-{
-  "token": "YOUR_BOT_TOKEN_HERE",
-  "guildId": "YOUR_GUILD_ID_HERE"
-}
-```
-
-Replace `YOUR_BOT_TOKEN_HERE` with your Discord bot token, and `YOUR_GUILD_ID_HERE` with the ID of your Discord server.
+5. Create a `.env` file in the project directory, copy `.env.example` contents and paste in the new file.
+6. Replace `TOKEN` with your bot token and `GUILDID` with your guild id.
 
 <div align="center">
 
