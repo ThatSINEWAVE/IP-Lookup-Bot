@@ -104,6 +104,37 @@ async def check_ip_info(interaction: discord.Interaction, ip_address: str):
         await print_error(e, interaction)
 
 
+@bot.tree.command(name='request', description="Make a request to any API or webpage")
+async def make_request(interaction: discord.Interaction, url: str):
+    try:
+        # Log user information
+        user_info = f'User: {interaction.user.name} (ID: {interaction.user.id})'
+        logging.info(user_info)
+
+        # Make the request
+        response = requests.get(url)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            # If the response is JSON, format it nicely
+            try:
+                response_data = response.json()
+                output = f'```json\n{json.dumps(response_data, indent=4)}\n```'
+            except json.JSONDecodeError:
+                # If not JSON, display the raw response
+                output = f'```\n{response.text}\n```'
+        else:
+            output = f'Error: {response.status_code} - {response.reason}'
+
+        # Log the response
+        logging.info(output)
+
+        # Send the response to the user
+        await interaction.response.send_message(output)
+    except Exception as e:
+        await print_error(e, interaction)
+
+
 @bot.tree.command(name='reversedns', description="Perform reverse DNS lookup")
 async def reversedns_lookup(interaction: discord.Interaction, input_ip: str):
     try:
