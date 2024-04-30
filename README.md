@@ -50,9 +50,13 @@ The bot will respond with a formatted message containing the IP information, and
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
+### Contributors
+
+- Thanks to [Nitrrine](https://github.com/Nitrrine) for various improvements and fixes.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Warning:
+## Warning
 This bot is not designed to scan or retrieve the IP addresses of Discord users. Using this bot for malicious purposes, such as attempting to obtain sensitive information or compromising user privacy, is strictly prohibited and goes against Discord's Terms of Service. Any unauthorized or unethical use of this bot will not be tolerated.
