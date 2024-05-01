@@ -8,25 +8,25 @@ This is a Discord bot that provides various network utilities and IP information
 
 ## Features
 
-- Discord command `/check <ip_address>` to retrieve detailed information about the specified IP address, including country, city, region, geolocation, ISP, organization, and more.
+- `/check <ip_address>` to retrieve detailed information about the specified IP address, including country, city, region, geolocation, ISP, organization, and more.
 
-- Discord command `/request <url>` to make custom requests to any API or web page and display the response.
+- `/request <url>` to make custom requests to any API or web page and display the response.
 
-- Discord command `/reversedns <ip_address>` to perform a reverse DNS lookup.
+- `/reversedns <ip_address>` to perform a reverse DNS lookup.
 
-- Discord command `/dnslookup <domain>` to perform a DNS lookup.
+- `/dnslookup <domain>` to perform a DNS lookup.
 
-- Discord command `/hostsearch <domain>` to search for hosts sharing the same DNS.
+- `/hostsearch <domain>` to search for hosts sharing the same DNS.
 
-- Discord command `/shareddns <dns>` to find shared DNS entries.
+- `/shareddns <dns>` to find shared DNS entries.
 
-- Discord command `/whois <domain_or_ip>` to perform a WHOIS lookup.
+- `/whois <domain_or_ip>` to perform a WHOIS lookup.
 
-- Discord command `/reverseip <ip_address>` to perform a reverse IP lookup.
+- `/reverseip <ip_address>` to perform a reverse IP lookup.
 
-- Discord command `/aslookup <ip_or_as>` to perform an AS lookup.
+- `/aslookup <ip_or_as>` to perform an AS lookup.
 
-- Discord command `/ipgeo <ip_address>` to retrieve IP geolocation information.
+- `/ipgeo <ip_address>` to retrieve IP geolocation information.
 
 - Logging of user information, commands, and bot responses in a `logger.txt` file.
 
