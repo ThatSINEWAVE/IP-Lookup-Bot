@@ -178,12 +178,12 @@ async def shared_dns(interaction: discord.Interaction, input_dns: str):
 @bot.tree.command(name='whois', description="Perform WHOIS lookup")
 async def whois_lookup(interaction: discord.Interaction, input_domain_or_ip: str):
     try:
-        whois_info = whois.whois(input_domain_or_ip)
+        whois_info = dict(whois.whois(input_domain_or_ip))
         whois_output = ''
         for key, value in whois_info.items():
-            whois_output += f'{key}: {value}\n'
-        output = f'```\n{whois_output}\n```'
-        await interaction.response.send_message(output)
+            whois_output += f'{key.replace("_", " ").title()}: {value}\n'
+        output = f"```{whois_output}```"
+        await interaction.response.send_message(output.replace("[", "").replace("]", "").replace("'", ""))
     except Exception as e:
         await print_error(e, interaction)
 
