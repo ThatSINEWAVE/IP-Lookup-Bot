@@ -28,6 +28,8 @@ This is a Discord bot that provides various network utilities and IP information
 
 - `/ipgeo <ip_address>` to retrieve IP geolocation information.
 
+- `/checkinvite <invite_link>` to check discord invite links.
+
 - Logging of user information, commands, and bot responses in a `logger.txt` file.
 
 - Error handling for invalid inputs or API failures.
