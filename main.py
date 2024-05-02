@@ -218,5 +218,73 @@ async def ip_geolocation(interaction: discord.Interaction, input_ip: str):
     except Exception as e:
         await print_error(e, interaction)
 
+
+@bot.tree.command(name='checkinvite', description="Check Discord invite")
+async def check_invite(interaction: discord.Interaction, invite_link: str):
+    try:
+        # Extract invite code from the link
+        invite_code = invite_link.split('/')[-1]
+
+        # Make a request to Discord API to get invite information
+        response = requests.get(f'https://discord.com/api/v9/invites/{invite_code}')
+        data = response.json()
+
+        # Check if the request was successful
+        if 'guild' in data:
+            # Extract guild information
+            guild_info = data['guild']
+            guild_name = guild_info.get('name', 'Not found')
+            guild_id = guild_info.get('id', 'Not found')
+            guild_splash = guild_info.get('splash', 'Not found')
+            guild_banner = guild_info.get('banner', 'Not found')
+            guild_description = guild_info.get('description', 'Not found')
+            guild_icon = guild_info.get('icon', 'Not found')
+            guild_features = ', '.join(guild_info.get('features', ['Not found']))
+            guild_verification_level = guild_info.get('verification_level', 'Not found')
+            guild_vanity_url_code = guild_info.get('vanity_url_code', 'Not found')
+            guild_nsfw_level = guild_info.get('nsfw_level', 'Not found')
+            guild_nsfw = guild_info.get('nsfw', 'Not found')
+            guild_premium_subscription_count = guild_info.get('premium_subscription_count', 'Not found')
+
+            # Extract channel information
+            channel_info = data['channel']
+            channel_id = channel_info.get('id', 'Not found')
+            channel_type = channel_info.get('type', 'Not found')
+            channel_name = channel_info.get('name', 'Not found')
+
+            # Format and send the response with invite information
+            invite_info_msg = (
+                f'**Guild Name:** {guild_name}\n'
+                f'**Guild ID:** {guild_id}\n'
+                f'**Guild Splash:** {guild_splash}\n'
+                f'**Guild Banner:** {guild_banner}\n'
+                f'**Guild Description:** {guild_description}\n'
+                f'**Guild Icon:** {guild_icon}\n'
+                f'**Guild Features:** {guild_features}\n'
+                f'**Guild Verification Level:** {guild_verification_level}\n'
+                f'**Guild Vanity URL Code:** {guild_vanity_url_code}\n'
+                f'**Guild NSFW Level:** {guild_nsfw_level}\n'
+                f'**Guild NSFW:** {guild_nsfw}\n'
+                f'**Guild Premium Subscription Count:** {guild_premium_subscription_count}\n'
+                f'**Channel ID:** {channel_id}\n'
+                f'**Channel Type:** {channel_type}\n'
+                f'**Channel Name:** {channel_name}\n'
+                f'**Invite URL:** `{invite_link}`'
+            )
+
+            # Log the response
+            logging.info(invite_info_msg)
+
+            # Send the response to the user
+            await interaction.response.send_message(invite_info_msg)
+        else:
+            # If the request was not successful, send an error message
+            error_msg = "Error retrieving invite info. Please check the invite link and try again."
+            logging.error(error_msg)
+            await interaction.response.send_message(error_msg)
+    except Exception as e:
+        await print_error(e, interaction)
+
+
 # Run the bot with the token
 bot.run(TOKEN)
