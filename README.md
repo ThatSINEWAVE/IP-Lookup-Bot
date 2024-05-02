@@ -71,6 +71,10 @@ This is a Discord bot that provides various network utilities and IP information
 4. Create a new Discord server or use an existing one, and obtain the server ID (Guild ID).
 
 5. Create a `.env` file in the project directory, copy `.env.example` contents and paste in the new file.
+```env
+TOKEN=YOUR_TOKEN_HERE
+GUILDID=YOUR_GUILD_HERE
+```
 
 6. Replace `TOKEN` with your bot token and `GUILDID` with your guild ID.
 
