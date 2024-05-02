@@ -36,7 +36,7 @@ This is a Discord bot that provides various network utilities and IP information
 
 ## Requirements
 
-- Python 3.6 or higher
+- Python 3.9.x recommended
 - `discord.py==2.3.2`
 - `requests==2.26.0`
 - `python-whois==0.9.4`
