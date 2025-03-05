@@ -72,7 +72,7 @@ This is a Discord bot that provides various network utilities and IP information
 
 5. Create a `.env` file in the project directory, copy `.env.example` contents and paste in the new file.
 ```env
-TOKEN=YOUR_TOKEN_HERE
+TOKEN=YOUR_BOT_TOKEN_HERE
 GUILDID=YOUR_GUILD_HERE
 ```
 
