@@ -2,6 +2,8 @@
 
 # IP Information and Network Utilities Discord Bot
 
+![READ_THE_FUCKING_DOCUMENTATION](https://raw.githubusercontent.com/ThatSINEWAVE/IP-Lookup-Bot/refs/heads/main/.github/assets/FUCKING_STOP.gif)
+
 This is a Discord bot that provides various network utilities and IP information retrieval capabilities. It allows users to retrieve detailed information about IP addresses, perform DNS lookups, find shared DNS entries, conduct WHOIS queries, and make custom requests to APIs or web pages.
 
 </div>
